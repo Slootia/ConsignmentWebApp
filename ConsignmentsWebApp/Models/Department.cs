@@ -10,6 +10,7 @@ namespace ConsignmentsWebApp.Models
         public int Id { get; set; }
         public int ConsignmentsId { get; set; }
         public int LocationId { get; set; }
+        public string Name { get; set; }
         public int Members { get; set; }
     }
 }

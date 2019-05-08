@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Data.Entity;
+using ConsignmentsWebApp.Models;
 
 namespace ConsignmentsWebApp
 {
@@ -12,6 +14,8 @@ namespace ConsignmentsWebApp
     {
         protected void Application_Start()
         {
+            Database.SetInitializer(new ConsignmentsDbInitializer());
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
