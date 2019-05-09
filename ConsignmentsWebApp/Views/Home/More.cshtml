@@ -1,0 +1,27 @@
+﻿
+@{
+    Layout = null;
+    string temp = string.Empty;
+}
+
+<!DOCTYPE html>
+
+@foreach (var c in ViewBag.Consignments)
+{
+    if (c.Id == ViewBag.Id)
+    {
+        temp = c.Name;
+    }
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>О партии @temp</title>
+</head>
+<body>
+    <div>
+
+            <h3>О партии @temp</h3>
+        </div>
+</body>
+</html>

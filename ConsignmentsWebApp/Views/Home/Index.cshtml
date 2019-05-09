@@ -10,21 +10,16 @@
     <title>Сайт с партиями</title>
 </head>
 <body>
-    <div>
-        <h3>Партии России</h3>
-        <table>
-            <tr>
-                <td><p>Название партии</p></td>
-                <td></td>
-            </tr>
-            @foreach (var c in ViewBag.Consignments)
-            {
-                <tr>
-                    <td><p>@c.Name</p></td>
-                    <td><p><a href="/Home/More/@c.Id">Узнать больше</a></p></td>
-                </tr>
-            }
-        </table>
-    </div>
+    <h3>Партии России</h3>
+    <select style="width:300px;height:300px;line-height:3em;overflow:scroll;padding:5px;">
+        @foreach (var c in ViewBag.Consignments)
+        {
+            <option
+                value="@c.Name">
+            </option>
+        }
+    </select>
+    <button> <a href="/Home/More/@c.Id">Узнать больше</button>
+    <button> <a href="/Home/More/@c.Id">Редактировать</button>
 </body>
 </html>

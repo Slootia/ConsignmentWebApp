@@ -9,7 +9,7 @@ namespace ConsignmentsWebApp.Controllers
 {
     public class HomeController : Controller
     {
-        ConsingnmentContext context = new ConsingnmentContext();
+        readonly ConsingnmentContext context = new ConsingnmentContext();
 
         public ActionResult Index()
         {
@@ -18,9 +18,14 @@ namespace ConsignmentsWebApp.Controllers
             return View();
         }
 
-        //public ActionResult More()
-        //{
-        //    return ;
-        //}
+        [HttpGet]
+        public ActionResult More(int? id)
+        {
+            //TODO: Добавить проверку на null у id
+            IEnumerable<Consignment> consignments = context.Consignments;
+            ViewBag.Consignments = consignments;
+            ViewBag.Id = id;
+            return View();
+        }
     }
 }
