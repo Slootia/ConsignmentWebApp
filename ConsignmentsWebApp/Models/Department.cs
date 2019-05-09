@@ -7,7 +7,7 @@ namespace ConsignmentsWebApp.Models
 {
     public class Department
     {
-        public int Id { get; private set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public int MembersCount { get; set; }
         public string LeaderOfDepartment { get; set; }

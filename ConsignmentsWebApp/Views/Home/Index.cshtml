@@ -10,16 +10,18 @@
     <title>Сайт с партиями</title>
 </head>
 <body>
-    <h3>Партии России</h3>
-    <select style="width:300px;height:300px;line-height:3em;overflow:scroll;padding:5px;">
-        @foreach (var c in ViewBag.Consignments)
+    <h3><strong>Партии России: </strong></h3> (<a href="/Home/Create" style="color: blue">Создать новую</a>)
+    <br/>
+    <div style="min-height: 150px; font-size: 1.25em;">
+        @foreach(var consingment in ViewBag.Consignments)
         {
-            <option
-                value="@c.Name">
-            </option>
+        <div>
+            <strong><div style="display:inline-block">@consingment.Name</div></strong>
+            <div style="display:inline-block">@consingment.Leader</div>
+            @*<div class="listing-item">[$@consingment.QuantityInStock in stock]</div>*@
+            <div style="display:inline-block">(<a href="/home/edit/@consingment.Id" style="color: blue;">edit</a>)</div>
+        </div>
         }
-    </select>
-    <button> <a href="/Home/More/@c.Id">Узнать больше</button>
-    <button> <a href="/Home/More/@c.Id">Редактировать</button>
+    </div>
 </body>
 </html>

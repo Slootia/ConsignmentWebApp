@@ -20,12 +20,14 @@ namespace ConsignmentsWebApp.Models
             db.Consignments.AddRange(consignments);
             db.SaveChanges();
 
-            Location Moscow = new Location { Name = "Московская область", MainCity = "Москва", Population = 10000000 };
-            db.Locations.Add(Moscow);
+            Location MoscowDist = new Location { Name = "Московская область", MainCity = "Москва", Population = 10000000 };
+            Location SverdlovskDist = new Location { Name = "Свердловская область", MainCity = "Екатеринбург", Population = 1000000 };
+            db.Locations.Add(SverdlovskDist);
+            db.Locations.Add(MoscowDist);
             db.SaveChanges();
 
-            Department lprMoscow = new Department { Name = "Московское отделение ЛПР", LeaderOfDepartment = "SomePerson", Consignment = lpr, MembersCount = 200, Location = Moscow };
-            Department edroMoscow = new Department { Name = "Московское отделение Единой России", LeaderOfDepartment = "SomePerson1", Consignment = edro, MembersCount = 5000, Location = Moscow };
+            Department lprMoscow = new Department { Name = "Московское отделение ЛПР", LeaderOfDepartment = "SomePerson", Consignment = lpr, MembersCount = 200, Location = MoscowDist };
+            Department edroMoscow = new Department { Name = "Московское отделение Единой России", LeaderOfDepartment = "SomePerson1", Consignment = edro, MembersCount = 5000, Location = MoscowDist };
             List<Department> departments = new List<Department>
             {
                 lprMoscow,
