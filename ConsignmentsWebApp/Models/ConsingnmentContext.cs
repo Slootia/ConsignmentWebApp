@@ -9,7 +9,6 @@ namespace ConsignmentsWebApp.Models
     public class ConsingnmentContext : DbContext
     {
         public DbSet<Consignment> Consignments { get; set; }
-        public DbSet<Department> Departments { get; set; }
         public DbSet<Location> Locations { get; set; }
     }
 }

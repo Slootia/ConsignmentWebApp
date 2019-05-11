@@ -11,5 +11,11 @@ namespace ConsignmentsWebApp.Models
         public string Name { get; set; }
         public string MainCity { get; set; } 
         public int Population { get; set; }
+
+        public virtual ICollection<Consignment> Consignments { get; set; }
+        public Location()
+        {
+            Consignments = new List<Consignment>();
+        }
     }
 }

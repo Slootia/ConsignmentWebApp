@@ -18,20 +18,30 @@ namespace ConsignmentsWebApp.Controllers
             ViewBag.Consignments = consignments;
             return View();
         }
+        //Done
         [HttpGet]
         public ActionResult Create()
         {
             Consignment consignment = new Consignment();
+            ViewBag.Locations = db.Locations.ToList();
             return View(consignment);
         }
         [HttpPost]
-        public ActionResult Create(Consignment consignment)
+        public ActionResult Create(Consignment consignment, int[] selectedLocations)
         {
-            db.Consignments.Add(consignment);
+            consignment.Locations.Clear();
+            if (selectedLocations != null)
+            {
+                foreach (var l in db.Locations.Where(lo => selectedLocations.Contains(lo.Id)))
+                {
+                    consignment.Locations.Add(l);
+                }
+            }
+            db.Entry(consignment).State = EntityState.Added;
             db.SaveChanges();
-            return Redirect("/");
+            return RedirectToAction("Index");
         }
-
+        //Done
         [HttpGet]
         public ActionResult Edit(int? id)
         {
@@ -41,29 +51,39 @@ namespace ConsignmentsWebApp.Controllers
                 return HttpNotFound();
             }
 
+            ViewBag.Locations = db.Locations.ToList();
             return View(consignment);
         }
-
         [HttpPost]
-        public ActionResult Edit(Consignment consignment)
+        public ActionResult Edit(Consignment consignment, int[] selectedLocations)
         {
             Consignment newConsignment = db.Consignments.Find(consignment.Id);
             newConsignment.Name = consignment.Name;
             newConsignment.Leader = consignment.Leader;
+            newConsignment.Locations.Clear();
+            if (selectedLocations != null)
+            {
+                foreach (var l in db.Locations.Where(lo => selectedLocations.Contains(lo.Id)))
+                {
+                    newConsignment.Locations.Add(l);
+                }
+            }
+
             db.Entry(newConsignment).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
         public ActionResult More(int? id)
         {
             if (id == null)
             {
                 return HttpNotFound();
             }
-            IEnumerable<Consignment> consignments = db.Consignments;
-            ViewBag.Consignments = consignments;
-            ViewBag.Id = id;
-            return View();
+
+            var consignment = db.Consignments.Find(id);
+            ViewBag.Consignment = consignment;
+            return View(consignment);
         }
     }
 }

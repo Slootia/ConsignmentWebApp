@@ -1,27 +1,26 @@
-﻿
+﻿@using ConsignmentsWebApp.Models
+@model Consignment
 @{
     Layout = null;
-    string tempName = string.Empty;
 }
 
 <!DOCTYPE html>
 
-@foreach (var c in ViewBag.Consignments)
-{
-    if (c.Id == ViewBag.Id)
-    {
-        tempName = c.Name;
-    }
-}
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>О партии @tempName</title>
+    <title>О партии @Model.Name</title>
 </head>
 <body>
     <div>
-
-            <h3>О партии @tempName</h3>
-        </div>
+        <h3>О партии @Model.Name</h3>
+        <ul>
+            @foreach (Location l in Model.Locations)
+            {
+                <li>@l.Name</li>
+            }
+        </ul>
+    @* TODO: Вывести списком все локации *@
+</div>
 </body>
 </html>

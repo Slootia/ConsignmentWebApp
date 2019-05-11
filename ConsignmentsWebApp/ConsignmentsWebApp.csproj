@@ -133,7 +133,6 @@
     <Compile Include="Models\ConsignmentsDbInitializer.cs" />
     <Compile Include="Models\Consignment.cs" />
     <Compile Include="Models\ConsingnmentContext.cs" />
-    <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
