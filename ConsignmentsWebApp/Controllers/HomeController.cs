@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using ConsignmentsWebApp.Models;
 
@@ -18,7 +16,7 @@ namespace ConsignmentsWebApp.Controllers
             ViewBag.Consignments = consignments;
             return View();
         }
-        //Done
+
         [HttpGet]
         public ActionResult Create()
         {
@@ -41,7 +39,7 @@ namespace ConsignmentsWebApp.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        //Done
+
         [HttpGet]
         public ActionResult Edit(int? id)
         {
@@ -68,7 +66,6 @@ namespace ConsignmentsWebApp.Controllers
                     newConsignment.Locations.Add(l);
                 }
             }
-
             db.Entry(newConsignment).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
