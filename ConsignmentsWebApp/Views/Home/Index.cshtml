@@ -11,16 +11,16 @@
 </head>
 <body>
     <h3><strong>Партии России: </strong></h3> (<a href="/Home/Create" style="color: blue">Создать новую</a>)
-    <br/>
+    <br />
     <div style="min-height: 150px; font-size: 1.25em;">
-        @foreach(var consingment in ViewBag.Consignments)
+        @foreach (var consingment in ViewBag.Consignments)
         {
-        <div>
-            <strong><div style="display:inline-block">@consingment.Name</div></strong>
-            <div style="display:inline-block">@consingment.Leader</div>
-            <div style="display:inline-block">(<a href="/home/more/@consingment.Id" style="color: blue;">О партии</a>)</div>
-            <div style="display:inline-block">(<a href="/home/edit/@consingment.Id" style="color: blue;">edit</a>)</div>
-        </div>
+            <div>
+                <strong><div style="display:inline-block">@consingment.Name</div></strong>
+                <div style="display:inline-block">@consingment.Leader</div>
+                <div style="display:inline-block">(<a href="/home/more/@consingment.Id" style="color: blue;">О партии</a>)</div>
+                <div style="display:inline-block">(<a href="/home/edit/@consingment.Id" style="color: blue;">edit</a>)</div>
+            </div>
         }
     </div>
 </body>

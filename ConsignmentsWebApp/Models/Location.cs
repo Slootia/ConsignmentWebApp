@@ -9,7 +9,7 @@ namespace ConsignmentsWebApp.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string MainCity { get; set; } 
+        public string MainCity { get; set; }
         public int Population { get; set; }
 
         public virtual ICollection<Consignment> Consignments { get; set; }
